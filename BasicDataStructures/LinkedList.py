@@ -56,11 +56,3 @@ myList.pop()
 myList.pop()
 myList.pop()
 
-
-
-
-#print(myList.pop())
-#print(myList.pop())
-#print(myList.pop())
-
-
