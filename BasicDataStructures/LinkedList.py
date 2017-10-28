@@ -10,8 +10,9 @@ class Node:
 class LinkedList:
 	def __init__(self):
 		self.head = None
+		self.tail = None
 
-	def append(self, data):
+	def push(self, data):
 		newNode = Node(data)
 
 		if self.head is None:
@@ -45,10 +46,10 @@ class LinkedList:
 		return s
 
 myList = LinkedList()
-myList.append('d')
-myList.append('a')
-myList.append('b')
-myList.append('c')
+myList.push('d')
+myList.push('a')
+myList.push('b')
+myList.push('c')
 print(myList)
 myList.pop()
 myList.pop()
