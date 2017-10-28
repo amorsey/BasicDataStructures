@@ -9,8 +9,8 @@ class DynamicList:
         if self.eleNum == self.listLen:
             print("ERROR: List too large")
         else:
-            self.end = (self.end+1)%self.listLen
             self.myList[self.end] = data
+            self.end = (self.end+1)%self.listLen
             self.eleNum += 1
 
     def pop(self):
@@ -20,23 +20,46 @@ class DynamicList:
             temp = self.start
             self.start = (self.start+1)%self.listLen
             self.eleNum -= 1
-            return myList[temp]
+            return self.myList[temp]
 
     def __str__(self):
-        s = "{"
+        s = "["
         p = self.start
-        for i in range(self.listLen):
+        for i in range(self.eleNum):
             s = s + str(self.myList[p]) +","
             p = (p+1)%self.listLen
-        s += "}"
+        s += "]"
         return s
 
 
 l = DynamicList()
 l.push(4)
+print(l)
 l.push(2)
+print(l)
 l.push(1)
+print(l)
 l.push(3)
+print(l)
 l.push(5)
 print(l)
 print(l.pop())
+print(l)
+print(l.pop())
+print(l)
+print(l.pop())
+print(l)
+l.push(7)
+l.push(8)
+l.push(9)
+print(l)
+print(l.pop())
+print(l)
+print(l.pop())
+print(l)
+print(l.pop())
+print(l)
+
+
+
+
