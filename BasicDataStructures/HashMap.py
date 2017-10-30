@@ -19,25 +19,42 @@ class HashMap:
 
     def addKey(self, key):
         h = self.hash(key)%self.size
-        if self.table[h] == None:
-            n = None(key)
-            self.table[h] == n
+        n = Node(key)
+        p = self.table[h]
+        
+        if p == None:
+            self.table[h] = n
         else:
-            t = self.table[h]
-            while t.next is not None and t.data != key:
-                t = t.next
-            if t.next is None:
-                n = None(key)
-                t.next = n
+            while p.next != None and p.data != key:
+                p = p.next
+            if p.next == None:
+                p.next = n
+
 
     def __str__(self):
         s = ""
         for i in range(self.size):
-            p = 
+            s += str(i) + ":"
+            p = self.table[i]
+            while p != None:
+                s = s + " - " + str(p.data)
+                p = p.next
+            s += "\n"
 
         return s
 
         
 
 myMap = HashMap(10)
+myMap.addKey("alex")
+myMap.addKey("lexa")
+myMap.addKey("xlea")
+myMap.addKey("xael")
+myMap.addKey("alex")
+myMap.addKey("l")
+myMap.addKey("lxea")
+myMap.addKey("aexl")
+myMap.addKey("xeal")
+
+print(myMap)
 
