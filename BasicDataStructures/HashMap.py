@@ -25,11 +25,11 @@ class HashMap:
         if p == None:
             self.table[h] = n
         else:
-            while p.next != None and p.data != key:
+            while p.next != None:
                 p = p.next
-            if p.next == None:
-                p.next = n
-
+                if p.data == key:
+                    pass
+            p.next = n
 
     def __str__(self):
         s = ""
@@ -52,6 +52,9 @@ myMap.addKey("xlea")
 myMap.addKey("xael")
 myMap.addKey("alex")
 myMap.addKey("l")
+myMap.addKey("lxea")
+myMap.addKey("aexl")
+myMap.addKey("xeal")
 myMap.addKey("lxea")
 myMap.addKey("aexl")
 myMap.addKey("xeal")
