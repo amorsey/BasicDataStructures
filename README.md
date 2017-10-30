@@ -1,2 +1,2 @@
 # BasicDataStructures
-Data structures I made for future use
+Data structures I made for practice and future use.
