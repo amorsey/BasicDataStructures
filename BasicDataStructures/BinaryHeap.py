@@ -5,6 +5,16 @@ class BinaryHeap:
     def parent(self, i):
         return (i-1)//2
 
+    def biggestChild(self, p):
+        c1 = p*2+1
+        c2 = p*2+2
+        l = len(self.heap)
+        if c1 < l and (c2 >= l or self.heap[c1] > self.heap[c2]):
+            return c1
+        elif c2 < l and (c1 >= l or self.heap[c2] > self.heap[c1]):
+            return c2
+        return -1
+
     def heapUp(self, p):
         data = self.heap[p]
         pr = self.parent(p)
@@ -15,19 +25,14 @@ class BinaryHeap:
             pr = self.parent(p)
 
     def heapDown(self, p):
+        c = self.biggestChild(p)
         data = self.heap[p]
-        length = len(self.heap)
-        c1 = p*2+1
-        c2 = p*2+2
-        if c1 < length and self.heap[c1] > data:
-            self.heap[p] = self.heap[c1]
-            self.heap[c1] = data
-            self.heapDown(c1)
-        data = self.heap[p]
-        if c2 < length and self.heap[c2] > data:
-            self.heap[p] = self.heap[c2]
-            self.heap[c2] = data
-            self.heapDown(c2)
+
+        while c > 0 and self.heap[c] > self.heap[p]:
+            self.heap[p] = self.heap[c]
+            self.heap[c] = data
+            p = c
+            c = self.biggestChild(p)
 
     def insert(self, data):
         self.heap.append(data)
