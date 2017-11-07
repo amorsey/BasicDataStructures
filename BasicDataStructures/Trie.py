@@ -20,42 +20,46 @@ class Trie:
         p.endOfWord = True
 
 
-    def delete(self, word):
-        pass
-
     def search(self, word):
         p = self.root
         i = 0
         length = len(word)
         while i < length and word[i] in p.children:
             p = p.children[word[i]]
+            i += 1
         if i == length:
             return p
-        else:
-            return None
 
-    def children(self, parent, prefix):
-        l = []
-        for i in parent.children:
-            a = children(parent.children[i])
-            for e in a:
-                l.append(prefix+e)
-        return l
+
+    def childWords(self, spot):
+        childList = []
+
+        if spot.endOfWord:
+            childList.append("")
+
+        for char in spot.children:
+            givenList = self.childWords(spot.children[char])
+            for word in givenList:
+                childList.append(char+word)
+        return childList
 
 
     def prefix(self, word):
         p = self.search(word)
-        words = []
-
         if p:
-            for c in p.children:
-                pass
+            l = self.childWords(p)
+            newList = []
+            for e in l:
+                newList.append(word+e)
+            return newList
 
 
-myDict = {"a": "1", "c": "2", "f": "3"}
-for c in myDict:
-    print(myDict[c])
-
+    def __str__(self):
+        s = ""
+        l = self.childWords(self.root)
+        for e in l:
+            s = s + e + ","
+        return s
 
 
 myTrie = Trie()
@@ -66,5 +70,4 @@ myTrie.add("they")
 myTrie.add("them")
 myTrie.add("heath")
 myTrie.add("see")
-
-
+print(myTrie.prefix("s"))
