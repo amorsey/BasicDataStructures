@@ -3,25 +3,21 @@
 
 class Algorithms:
     def binarySearch(self, orderedList, desiredElement):
-        searchSpace = len(orderedList)//2
-        guess = searchSpace
+        startSS = 0
+        endSS = len(orderedList)-1
 
-        while searchSpace > 0:
-            #print(searchSpace)
+        while endSS-startSS >= 0:
+            guess = startSS+(endSS-startSS+1)//2
             value = orderedList[guess]
-            searchSpace = searchSpace//2
-            if value == desiredElement:
-                return value
-            elif value < desiredElement:
-                guess += searchSpace
-            else:
-                guess -= searchSpace
 
-            #print(guess)
-            #print(searchSpace)
-            print(value)
+            if value == desiredElement:
+                return guess
+            elif value < desiredElement:
+                startSS = guess+1
+            else:
+                endSS = guess-1
 
 
 myList = [1, 4, 5, 6, 11, 13, 15, 16, 17, 22, 31]
 alg = Algorithms()
-print(alg.binarySearch(myList, 17))
+print(alg.binarySearch(myList, 6))
