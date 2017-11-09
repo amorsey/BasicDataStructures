@@ -1,5 +1,6 @@
-# Binary Search class
-# Finds and returns an item in an ordered list in O(log(n)) time.
+# Algorithm Class
+# binarySearch() finds and returns an item in an ordered list in O(logn) time.
+# mergeSort() sorts an unordered list in O(nlogn) time.
 
 class Algorithms:
     def binarySearch(self, orderedList, desiredElement):
@@ -21,9 +22,22 @@ class Algorithms:
         mid = len(unorderedList)//2
 
         if mid != 0:
-            lList = self.mergeSort(mid:)
-            rList = self.mergeSort(:mid)
-            return merge(lList, rList)
+            lList = self.mergeSort(unorderedList[:mid])
+            rList = self.mergeSort(unorderedList[mid:])
+
+            # Merge left and right list into unorderedlist
+            n = 0
+            m = 0
+            lenL = len(lList)
+            lenR = len(rList)
+
+            while n+m < len(unorderedList):
+                if m == lenR or n < lenL and m < lenR and lList[n] < rList[m]:
+                    unorderedList[n+m] = lList[n]
+                    n += 1
+                else:
+                    unorderedList[n+m] = rList[m]
+                    m += 1
 
         return unorderedList
 
@@ -32,9 +46,9 @@ class Algorithms:
 
 
 
-myList = [1, 4, 5, 6, 11, 13, 15, 16, 17, 22, 31]
+myList = [4, 5, 3, 3, 1]
 alg = Algorithms()
-print(myList[:4])
+print(alg.mergeSort(myList))
 
 
 
