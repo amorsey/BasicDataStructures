@@ -41,6 +41,9 @@ class Algorithms:
 
         return unorderedList
 
+    def quickSort(self, unorderedList):
+        pass
+
 
 
 
