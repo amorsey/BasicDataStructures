@@ -17,7 +17,28 @@ class Algorithms:
             else:
                 endSS = guess-1
 
+    def mergeSort(self, unorderedList):
+        mid = len(unorderedList)//2
+
+        if mid != 0:
+            lList = self.mergeSort(mid:)
+            rList = self.mergeSort(:mid)
+            return merge(lList, rList)
+
+        return unorderedList
+
+
+
+
+
 
 myList = [1, 4, 5, 6, 11, 13, 15, 16, 17, 22, 31]
 alg = Algorithms()
-print(alg.binarySearch(myList, 6))
+print(myList[:4])
+
+
+
+
+
+
+
